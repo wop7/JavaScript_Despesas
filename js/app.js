@@ -35,6 +35,35 @@ class UI {
     }
   }
 
+  //show balance
+  showBalance(){
+    const expense = this.totalExpense();
+    const total = parseInt(this.budgetAmount.textContent) - expense;
+    this.balanceAmount.textContent = total;
+    if(total < 0){
+      this.balance.classList.remove('showGreen','showBlack');
+      this.balance.classList.add('showRed');
+    }
+    else if(total > 0){
+      this.balance.classList.remove('showGreen','showBlack');
+      this.balance.classList.add('showGreen');
+    }
+    else if(total === 0){
+      this.balance.classList.remove('showBlack','showGreen');
+      this.balance.classList.add('showBlack');
+    }
+  }
+
+  submmitExpenseForm(){
+    const expenseValue = this.expenseInput.value;
+  }
+
+  totalExpense(){
+    let total = 400;
+    return total;
+  }
+
+
 }
 
 
@@ -62,7 +91,9 @@ class UI {
     });
 
     //expenseList form submit
-    budget.addEventListener("click",function(event){    
+    budget.addEventListener("click",function(event){ 
+      event.preventDefault();
+      ui.submmitExpenseForm();   
     });
 
   
